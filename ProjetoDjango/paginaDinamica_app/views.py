@@ -11,8 +11,7 @@ def index(request):
 
 
 def autor(request):
-    return HttpResponse(
-        "Autor: Monalisa Silva Costa \n Informática para internet \n Ano:2024")
+    return HttpResponse("Autor: Monalisa Silva Costa \n Informática para internet \n Ano:2024")
 
 
 def resultado(request):
