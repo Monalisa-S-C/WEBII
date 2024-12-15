@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from math import sqrt
 
 
 def home(request):
@@ -11,19 +12,19 @@ def index(request):
 
 
 def autor(request):
-    return HttpResponse("Autor: Monalisa Silva Costa \n Informática para internet \n Ano:2024")
+    return render(request, 'autor.html')
 
 
 def resultado(request):
     if request.method == 'POST':
-        cat1 = request.POST.get('cat1')
-        cat2 = request.POST.get('cat2')
+        cat1 = float(request.POST.get('cat1',0))
+        cat2 = float(request.POST.get('cat2',0))
 
-        resultado = int(cat1 * 2) + int(cat2 * 2)
+        hipotenusa = sqrt(cat1**2 + cat2**2)
 
         enunciado = "Seu enunciado é: o quadrado da hipotenusa é igual à soma dos quadrados dos catetos."
         explicacao = "O teorema de Pitágoras é uma relação matemática entre as medidas dos lados de um triângulo retângulo. Esse teorema está sintetizado na frase: o quadrado da hipotenusa é igual à soma dos quadrados dos catetos."
-        resposta = f"A hipotenusa é: {resultado}"
+        resposta = f"A hipotenusa é: {hipotenusa}"
 
         return render(request, 'resultado.html', {
             'enunciado': enunciado,
