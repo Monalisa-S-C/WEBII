@@ -1,10 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from math import sqrt
+from rest_framework import viewsets
+from .models import Aluno
+from .serializers import AlunoSerializer
+
+class AlunoViewSet(viewsets.ModelViewSet):
+    queryset = Aluno.objects.all()
+    serializer_class = AlunoSerializer
 
 
 def home(request):
-    return HttpResponse("Olá, Seja bem vindo ao meu site!")
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        serie = request.POST.get('serie')
+
+        aluno = Aluno.objects.create(name=name, email=email, serie=serie)
+
+
+    return render(request, 'home.html')
 
 
 def index(request):
