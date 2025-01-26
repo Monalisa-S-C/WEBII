@@ -4,6 +4,7 @@ from math import sqrt
 from rest_framework import viewsets
 from .models import Aluno
 from .serializers import AlunoSerializer
+from django.contrib.auth.decorators import login_required
 
 class AlunoViewSet(viewsets.ModelViewSet):
     queryset = Aluno.objects.all()
@@ -11,19 +12,24 @@ class AlunoViewSet(viewsets.ModelViewSet):
 
 
 def home(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        serie = request.POST.get('serie')
+   # if request.method == 'POST':
+      #  name = request.POST.get('name')
+      #  email = request.POST.get('email')
+      #  serie = request.POST.get('serie')
 
-        aluno = Aluno.objects.create(name=name, email=email, serie=serie)
+       # aluno = Aluno.objects.create(name=name, email=email, serie=serie)
 
 
     return render(request, 'home.html')
 
-
+@login_required
 def index(request):
-    return render(request, 'index.html')
+    username = request.session.get('username')
+
+    contexto = {
+        'username': username
+    }
+    return render(request, 'index.html', contexto)
 
 
 def autor(request):

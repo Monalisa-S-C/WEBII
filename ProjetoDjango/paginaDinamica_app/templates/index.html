@@ -5,7 +5,7 @@
     <title>index </title>
 </head>
 <body>
-    <h1>Seja Bem-Vindo {{name}} </h1>
+    <h1>Seja Bem-Vindo {{username}} </h1>
     <h3>Vamos estudar um pouco sobre o Teorema de Pitágoras. O teorema de Pitágoras relaciona as medidas dos lados de um triângulo retângulo. Seu enunciado é: o quadrado da hipotenusa é igual à soma dos quadrados dos catetos.</h3>
     <form method="post" action="{% url 'resultado' %}">
     {% csrf_token %}

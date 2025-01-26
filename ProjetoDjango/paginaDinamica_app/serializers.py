@@ -4,4 +4,4 @@ from .models import Aluno
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
-        fields = ['id', 'name', 'email', 'serie']
+        fields = ['id', 'name', 'email']

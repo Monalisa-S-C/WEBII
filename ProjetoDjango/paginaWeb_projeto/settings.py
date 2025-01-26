@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'paginaDinamica_app',
+    'usuarios_app',
     'rest_framework',
 ]
 
@@ -127,3 +128,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = [
     'https://15796a9d-963c-4aab-a1eb-749e96a91808-00-3kwcthets92b9.kirk.replit.dev'
 ]
+
+LOGIN_URL = '/usuarios/login/'
+
+LOGIN_REDIRECT_URL = '/usuarios/index/'
+
+LOGOUT_REDIRECT_URL = '/usuarios/login/'
+
+SESSION_COOKIE_AGE = 900
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_SAVE_EVERY_REQUEST = False
