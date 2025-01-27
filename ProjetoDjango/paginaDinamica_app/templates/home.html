@@ -6,21 +6,9 @@
   <title>Cadastro do Aluno</title>
 </head>
 <body>
-  <h1>Olá Seja Bem- Vindo.</h1>
+  <h1>Olá Seja Bem- Vindo {{name}}.</h1>
   <h3> O Teorema de Pitágoras surgiu na Grécia e foi formulado pelo filósofo e matemático grego Pitágoras (570 a.C. – 495 a.C.). Vamos calculá-lo de forma simples e rápida? </h3>
   <h4> Aluno faça seu cadastro para acesso ao cálculo</h4>
-  <form method="post" action="{% url 'index' %}">
-    {% csrf_token %}
-    <label for="name">Nome:</label>
-    <input type="text" id="name" name="name" required>
-    <br><br>
-    <label for="email">E-mail Escolar:</label>
-    <input type="email" id="email" name="email" required>
-    <br><br>
-    <label for="serie">Série Escolar:</label>
-    <input type="serie" id="serie" name="serie" required>
-    <br><br>
-    <button type="submit">Cadastrar</button>
-  </form>
+  <p> <a href="{% url 'cadastro'%}">Clique aqui para fazer seu cadastro</a></p>
 </body>
 </html>
