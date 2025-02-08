@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<title>Listar Alunos</title>
+</head>
+<body>
+  <h2>Lista de Alunos</h2>
+  <a href="{% url 'criar_aluno' %}">Adicionar Aluno</a>
+  <ul>
+      {% for aluno in alunos %}
+          <li>{{ aluno.nome }} - {{ aluno.email }}
+              <a href="{% url 'editar_aluno' aluno.id %}">Editar</a> | 
+              <a href="{% url 'deletar_aluno' aluno.id %}">Excluir</a>
+          </li>
+      {% endfor %}
+  </ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<title>Buscar Aluno</title>
+</head>
+<body>
+  <h2>Buscar Aluno</h2>
+  <form method="get">
+      <input type="text" name="q" value="{{ query }}" placeholder="Digite um nome...">
+      <button type="submit">Buscar</button>
+  </form>
+  <ul>
+      {% for aluno in resultados %}
+          <li>{{ aluno.nome }} - {{ aluno.email }}</li>
+      {% endfor %}
+  </ul>
+  <a href="{% url 'listar_alunos' %}">Voltar</a>
+</body>
+</html>
