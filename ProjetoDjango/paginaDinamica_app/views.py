@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from math import sqrt
 from rest_framework import viewsets
 from .models import Aluno
@@ -29,6 +29,8 @@ def index(request):
     contexto = {
         'username': username
     }
+
+    print('Nome:', username)
     return render(request, 'index.html', contexto)
 
 
@@ -53,3 +55,23 @@ def resultado(request):
             'resposta': resposta
         })
     return HttpResponse("Método não permitido", status=405)
+
+
+
+def calcular_hipotenusa(request):
+    if request.method == "GET":
+        cat1 = request.GET.get("cat1")
+        cat2 = request.GET.get("cat2")
+
+        if cat1 and cat2:
+            try:
+                cat1 = float(cat1)
+                cat2 = float(cat2)
+                hipotenusa = sqrt(cat1**2 + cat2**2)
+                return JsonResponse({"hipotenusa": round(hipotenusa, 2)})
+            except (ValueError, TypeError):
+                return JsonResponse({"error": "Valores inválidos"}, status=400)
+
+        return render(request, "pitagoras.html")
+
+    return JsonResponse({"error": "Método não permitido"}, status=405)

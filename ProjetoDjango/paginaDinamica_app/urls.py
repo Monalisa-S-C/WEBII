@@ -11,5 +11,6 @@ urlpatterns = [
     path('index/', views.index, name='index'),
     path('resultado/', views.resultado, name='resultado'),
     path('autor/', views.autor, name='autor'),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('calculo/' , views.calcular_hipotenusa, name='calculo')
 ]
