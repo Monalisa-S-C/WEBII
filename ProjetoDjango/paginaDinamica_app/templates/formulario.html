@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Validação</title>
+    <style>
+        .error { color: red; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>Preecha o formulário abaixo</h1>
+    <form id="meuFormulario">
+        <br>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
+        <span class="error" id="erroNome"></span>
+        <br>
+
+        <br>
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email">
+        <span class="error" id="erroEmail"></span>
+        <br>
+
+        <br>
+        <label for="fone">Telefone:</label>
+        <input type="text" id="fone" name="fone">
+        <span class="error" id="erroFone"></span>
+        <br>
+
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("meuFormulario").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let valido = true;
+
+            let nome = document.getElementById("nome").value;
+            let email = document.getElementById("email").value;
+            let fone = document.getElementById("fone").value;
+
+            document.getElementById("erroNome").textContent = "";
+            document.getElementById("erroEmail").textContent = "";
+            document.getElementById("erroFone").textContent = "";
+
+            if (nome.length < 5 || nome.length > 40) {
+                document.getElementById("erroNome").textContent = "O nome deve ter entre 5 e 40 caracteres.";
+                valido = false;
+            }
+
+            if (!email.includes("@")) {
+                document.getElementById("erroEmail").textContent = "O e-mail deve conter um '@'.";
+                valido = false;
+            }
+
+            if (fone.length !== 11 || isNaN(fone)) {
+                document.getElementById("erroFone").textContent = "O telefone deve ter 11 dígitos (incluindo DDD).";
+                valido = false;
+            }
+
+            if (valido) {
+                alert("Formulário enviado com sucesso!");
+                this.submit();
+            }
+        });
+    </script>
+</body>
+    <li><a href="{% url 'home' %}">Voltar para Página Inicial</a></li>
+</html>
