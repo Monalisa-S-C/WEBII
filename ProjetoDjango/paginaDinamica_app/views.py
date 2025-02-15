@@ -75,3 +75,6 @@ def calcular_hipotenusa(request):
         return render(request, "pitagoras.html")
 
     return JsonResponse({"error": "Método não permitido"}, status=405)
+
+def formulario(request):
+    return render(request, 'formulario.html')
